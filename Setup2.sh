@@ -1,6 +1,9 @@
-cat << 'EOF' > install_plugins.sh
-#!/bin/bash
-echo "source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
-echo "source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
-echo "Plugins have been added to your .zshrc profile!"
+cat << 'EOF' > ~/.zshrc
+# Clean Zsh Config
+autoload -Uz compinit && compinit
+
+# Load the syntax highlighting and auto-suggestions we installed via apt
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 EOF
+
