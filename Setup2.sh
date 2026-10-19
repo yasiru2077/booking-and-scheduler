@@ -9,6 +9,4 @@ source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Verification confirmation message
 echo -e "\e[1;32m✔ Success! Fresh Zsh configuration has loaded successfully.\e[0m"
 EOF
-source ~/.zshrc
-
 
