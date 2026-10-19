@@ -1,12 +1,17 @@
 cat << 'EOF' > setup.sh
 #!/bin/bash
-# 1. Clone the complete syntax highlighting plugin link
-git clone https://github.com ~/.zsh-syntax-highlighting
 
-# 2. Clone the complete auto-suggestions plugin link
+# Step 1: Clean out the old empty folders
+rm -rf ~/.zsh-syntax-highlighting ~/.zsh-auto-suggestions
+
+# Step 2: Download the plugins using the FULL official GitHub repository links
+git clone https://github.com ~/.zsh-syntax-highlighting
 git clone https://github.com ~/.zsh-auto-suggestions
 
-# 3. Add both plugins to the configuration file safely
-echo "source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
-echo "source ~/.zsh-auto-suggestions/zsh-auto-suggestions.zsh" >> ~/.zshrc
+# Step 3: Link the plugins to your Zsh configuration file safely
+# (We check if they are already linked first so they don't duplicate)
+grep -qxF "source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ~/.zshrc || echo "source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
+grep -qxF "source ~/.zsh-auto-suggestions/zsh-auto-suggestions.zsh" ~/.zshrc || echo "source ~/.zsh-auto-suggestions/zsh-auto-suggestions.zsh" >> ~/.zshrc
+
+echo "All plugins downloaded and configured successfully!"
 EOF
